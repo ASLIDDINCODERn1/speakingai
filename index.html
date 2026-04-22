@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="description" content="Speaking AI - practice English speaking with live transcription, clear questions, and professional feedback." />
+<meta name="theme-color" content="#0f766e" />
+<title>Speaking AI - Professional Speaking Practice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Sora:wght@500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0%25' stop-color='%230f766e'/><stop offset='100%25' stop-color='%23ea580c'/></linearGradient></defs><circle cx='24' cy='24' r='22' fill='url(%23g)'/><path d='M14 20v8M19 15v18M24 11v26M29 15v18M34 20v8' stroke='white' stroke-width='3' stroke-linecap='round' fill='none'/></svg>" />
+</head>
+<body>
+
+<div id="splash" class="splash">
+  <div class="splash-bg"></div>
+  <div class="splash-content">
+    <div class="splash-logo">
+      <svg viewBox="0 0 48 48" width="96" height="96" aria-hidden="true">
+        <defs>
+          <linearGradient id="splash-grad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#0f766e"/>
+            <stop offset="100%" stop-color="#ea580c"/>
+          </linearGradient>
+        </defs>
+        <circle cx="24" cy="24" r="22" fill="url(#splash-grad)"/>
+        <path class="wave-bar b1" d="M14 20v8" stroke="white" stroke-width="3" stroke-linecap="round"/>
+        <path class="wave-bar b2" d="M19 15v18" stroke="white" stroke-width="3" stroke-linecap="round"/>
+        <path class="wave-bar b3" d="M24 11v26" stroke="white" stroke-width="3" stroke-linecap="round"/>
+        <path class="wave-bar b4" d="M29 15v18" stroke="white" stroke-width="3" stroke-linecap="round"/>
+        <path class="wave-bar b5" d="M34 20v8" stroke="white" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <h1 class="splash-title">
+      <span style="--i:0">S</span><span style="--i:1">p</span><span style="--i:2">e</span><span style="--i:3">a</span><span style="--i:4">k</span><span style="--i:5">i</span><span style="--i:6">n</span><span style="--i:7">g</span><span style="--i:8">&nbsp;</span><span style="--i:9">A</span><span style="--i:10">I</span>
+    </h1>
+    <p class="splash-sub">Created by <strong>asliddincoder</strong></p>
+    <div class="splash-loader"><span></span></div>
+  </div>
+</div>
+
+<div class="app" id="app" aria-hidden="true">
+  <header class="topbar">
+    <div class="brand">
+      <svg viewBox="0 0 48 48" width="32" height="32" aria-hidden="true">
+        <defs>
+          <linearGradient id="brand-grad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#0f766e"/>
+            <stop offset="100%" stop-color="#ea580c"/>
+          </linearGradient>
+        </defs>
+        <circle cx="24" cy="24" r="22" fill="url(#brand-grad)"/>
+        <path d="M14 20v8M19 15v18M24 11v26M29 15v18M34 20v8" stroke="white" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+      <span class="brand-name">Speaking <span class="brand-accent">AI</span></span>
+    </div>
+    <div class="topbar-actions">
+      <button id="theme-toggle" class="icon-button" title="Toggle theme" aria-label="Toggle theme">
+        <svg class="icon-sun" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+      </button>
+      <button id="settings-btn" class="icon-button" title="Settings" aria-label="Settings">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 01-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <nav class="stepper" aria-label="Progress">
+    <div class="step active" data-step="setup"><span class="step-num">1</span><span class="step-label">Setup</span></div>
+    <div class="step-bar"></div>
+    <div class="step" data-step="practice"><span class="step-num">2</span><span class="step-label">Practice</span></div>
+    <div class="step-bar"></div>
+    <div class="step" data-step="feedback"><span class="step-num">3</span><span class="step-label">Feedback</span></div>
+  </nav>
+
+  <main class="main">
+    <section id="setup-screen" class="screen active">
+      <div class="hero">
+        <h2 class="hero-title">Train your speaking with <span class="gradient-text">professional AI coaching</span></h2>
+        <p class="hero-sub">Choose your level and topic, answer real speaking prompts, and get exact corrections with targeted follow-up questions.</p>
+      </div>
+
+      <div class="card setup-card">
+        <div class="field">
+          <label class="field-label">Your English Level</label>
+          <div class="pill-group" id="level-group" role="radiogroup">
+            <button class="pill" data-value="A2">A2 - Elementary</button>
+            <button class="pill active" data-value="B1">B1 - Intermediate</button>
+            <button class="pill" data-value="B2">B2 - Upper</button>
+            <button class="pill" data-value="C1">C1 - Advanced</button>
+            <button class="pill" data-value="C2">C2 - Proficient</button>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="field-label">Topic</label>
+          <div class="topic-grid" id="topic-grid"></div>
+        </div>
+
+        <div class="field">
+          <label class="field-label">Number of Questions</label>
+          <div class="pill-group" id="count-group" role="radiogroup">
+            <button class="pill" data-value="5">5</button>
+            <button class="pill active" data-value="10">10</button>
+            <button class="pill" data-value="15">15</button>
+            <button class="pill" data-value="20">20</button>
+          </div>
+        </div>
+
+        <button id="start-btn" class="cta-button">
+          <span>Start Speaking Practice</span>
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </button>
+        <div id="settings-error" class="error"></div>
+      </div>
+    </section>
+
+    <section id="loading-screen" class="screen">
+      <div class="card loading-card">
+        <div class="spinner"></div>
+        <p id="loading-text">Preparing your questions...</p>
+      </div>
+    </section>
+
+    <section id="practice-screen" class="screen">
+      <div class="card practice-card">
+        <div class="practice-header">
+          <div class="progress-ring" id="progress-ring">
+            <svg viewBox="0 0 60 60" width="60" height="60">
+              <circle cx="30" cy="30" r="26" class="ring-track"/>
+              <circle cx="30" cy="30" r="26" class="ring-fill" id="ring-fill-circle"/>
+            </svg>
+            <span id="ring-text">1/10</span>
+          </div>
+          <div class="practice-meta">
+            <span class="tag" id="topic-label"></span>
+            <span class="tag tag-outline" id="level-label"></span>
+          </div>
+        </div>
+
+        <div class="question-box">
+          <button id="replay-btn" class="icon-button mini" title="Replay question" aria-label="Replay question">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5L6 9H2v6h4l5 4V5zM15.54 8.46a5 5 0 010 7.07M19.07 4.93a10 10 0 010 14.14"/></svg>
+          </button>
+          <p id="question-text" class="question-text"></p>
+        </div>
+
+        <div class="answer-box">
+          <div id="mic-status" class="mic-status">Press the mic to answer.</div>
+          <div id="transcript" class="transcript empty">Your spoken answer will appear here...</div>
+
+          <div class="controls">
+            <button id="redo-btn" class="ghost-button" disabled>
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 4v6h6M23 20v-6h-6"/><path d="M20.49 9A9 9 0 005.64 5.64L1 10M23 14l-4.64 4.36A9 9 0 013.51 15"/></svg>
+              Redo
+            </button>
+            <button id="mic-btn" class="mic-button" title="Record" aria-label="Record answer">
+              <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor"><path d="M12 15a3 3 0 003-3V6a3 3 0 10-6 0v6a3 3 0 003 3zm5-3a5 5 0 01-10 0H5a7 7 0 006 6.92V22h2v-3.08A7 7 0 0019 12h-2z"/></svg>
+            </button>
+            <button id="next-btn" class="primary-button" disabled>
+              Submit
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="feedback-screen" class="screen">
+      <div class="card feedback-card">
+        <h2 class="feedback-heading">Your Performance Report</h2>
+        <p class="feedback-sub" id="feedback-summary"></p>
+
+        <div class="score-hero">
+          <div class="score-ring">
+            <svg viewBox="0 0 120 120" width="140" height="140">
+              <circle cx="60" cy="60" r="54" class="ring-track"/>
+              <circle cx="60" cy="60" r="54" class="ring-fill big" id="score-ring-fill"/>
+            </svg>
+            <div class="score-value">
+              <span id="score-number">0</span>
+              <span class="score-max">/100</span>
+            </div>
+          </div>
+          <div class="score-grade" id="score-grade">-</div>
+        </div>
+
+        <div class="metrics" id="metrics"></div>
+        <div id="feedback-content"></div>
+
+        <div class="controls end">
+          <button id="restart-btn" class="primary-button">Practice Again</button>
+          <button id="home-btn" class="ghost-button">Change Topic</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Speaking AI | Created by <strong>asliddincoder</strong> | Professional speaking coach</p>
+  </footer>
+</div>
+
+<div id="settings-drawer" class="drawer" aria-hidden="true">
+  <div class="drawer-overlay" id="drawer-overlay"></div>
+  <aside class="drawer-panel" role="dialog" aria-label="Settings">
+    <div class="drawer-header">
+      <h3>Settings</h3>
+      <button id="drawer-close" class="icon-button" aria-label="Close">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="drawer-body">
+      <section class="drawer-section">
+        <h4>Appearance</h4>
+        <div class="theme-toggle-row">
+          <button class="theme-option" data-theme="dark">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+            Dark
+          </button>
+          <button class="theme-option" data-theme="light">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+            Light
+          </button>
+        </div>
+      </section>
+
+      <section class="drawer-section">
+        <h4>AI Agent Voice</h4>
+        <label class="mini-label">Accent</label>
+        <div class="pill-group compact" id="accent-filter">
+          <button class="pill active" data-accent="all">All</button>
+          <button class="pill" data-accent="en-US">US</button>
+          <button class="pill" data-accent="en-GB">UK</button>
+          <button class="pill" data-accent="en-AU">AU</button>
+          <button class="pill" data-accent="other">Other</button>
+        </div>
+        <label class="mini-label">Voice</label>
+        <select id="voice-select" class="select-input"></select>
+        <label class="mini-label">Speed <span id="rate-value">1.00x</span></label>
+        <input type="range" id="rate-slider" min="0.6" max="1.4" step="0.05" value="1" />
+        <button id="preview-voice" class="ghost-button full">Preview voice</button>
+      </section>
+
+      <section class="drawer-section">
+        <h4>About</h4>
+        <p class="about-text">
+          <strong>Speaking AI</strong> uses browser speech recognition for live transcription, then runs professional grammar checks and detailed coaching feedback.
+          Created by <strong>asliddincoder</strong>.
+        </p>
+      </section>
+    </div>
+  </aside>
+</div>
+
+<div id="toast" class="toast" aria-live="polite"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
