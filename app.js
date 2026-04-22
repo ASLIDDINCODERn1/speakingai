@@ -18,6 +18,7 @@ const state = {
   voiceRate: 1,
   theme: "dark",
   splashClosed: false,
+  lowPowerMode: false,
 };
 
 const STORAGE = {
@@ -102,6 +103,7 @@ async function bootstrap() {
   bindUiEvents();
   restoreSavedPreferences();
   initTheme();
+  initPerformanceMode();
   initSplash();
   initSpeechRecognition();
   initVoiceSettings();
@@ -118,6 +120,17 @@ async function bootstrap() {
 
   showScreen("setup");
   setStep("setup");
+}
+
+function initPerformanceMode() {
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const phoneViewport = window.matchMedia("(max-width: 640px)").matches;
+  const smallViewport = window.matchMedia("(max-width: 768px)").matches;
+  const lowMemory = typeof navigator.deviceMemory === "number" && navigator.deviceMemory <= 4;
+  const lowCpu = typeof navigator.hardwareConcurrency === "number" && navigator.hardwareConcurrency <= 4;
+
+  state.lowPowerMode = prefersReducedMotion || phoneViewport || (smallViewport && (lowMemory || lowCpu));
+  document.documentElement.classList.toggle("low-power", state.lowPowerMode);
 }
 
 function bindUiEvents() {
@@ -322,7 +335,7 @@ function initSplash() {
     app.setAttribute("aria-hidden", "false");
   };
 
-  setTimeout(closeSplash, 2600);
+  setTimeout(closeSplash, state.lowPowerMode ? 1200 : 2600);
   splash.addEventListener("click", closeSplash);
 }
 
@@ -511,7 +524,7 @@ function initSpeechRecognition() {
 
   const recognition = new SR();
   recognition.lang = "en-US";
-  recognition.interimResults = true;
+  recognition.interimResults = !state.lowPowerMode;
   recognition.continuous = true;
   recognition.maxAlternatives = 1;
 
@@ -521,6 +534,9 @@ function initSpeechRecognition() {
     let interim = "";
     for (let i = event.resultIndex; i < event.results.length; i += 1) {
       const transcript = event.results[i][0].transcript;
+      if (state.lowPowerMode && !event.results[i].isFinal) {
+        continue;
+      }
       if (event.results[i].isFinal) {
         finalText += `${transcript} `;
       } else {
@@ -1152,6 +1168,11 @@ function renderFeedbackReport(report) {
 
 function animateScore(target) {
   const element = $("score-number");
+  if (state.lowPowerMode) {
+    element.textContent = String(Math.round(target));
+    return;
+  }
+
   const start = Number(element.textContent) || 0;
   const diff = target - start;
   const duration = 900;
@@ -1196,9 +1217,13 @@ function renderMetrics(metrics) {
 
     container.appendChild(metric);
     const fill = metric.querySelector(".metric-bar-fill");
-    requestAnimationFrame(() => {
+    if (state.lowPowerMode) {
       fill.style.width = `${card.value}%`;
-    });
+    } else {
+      requestAnimationFrame(() => {
+        fill.style.width = `${card.value}%`;
+      });
+    }
   });
 }
 

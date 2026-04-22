@@ -101,6 +101,62 @@ body::after {
 }
 
 /* ============================================================
+   Low Power Mode
+   ============================================================ */
+
+html.low-power body::after {
+  display: none;
+}
+
+html.low-power .screen {
+  animation: none;
+}
+
+html.low-power .card {
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+html.low-power .drawer-overlay {
+  backdrop-filter: none;
+}
+
+html.low-power .splash-bg,
+html.low-power .splash-logo .wave-bar,
+html.low-power .splash-loader span,
+html.low-power .mic-button.recording {
+  animation: none !important;
+}
+
+html.low-power .splash-logo {
+  animation: logoIn 0.6s var(--ease) both;
+  filter: none;
+}
+
+html.low-power .cta-button,
+html.low-power .primary-button,
+html.low-power .mic-button,
+html.low-power .topic-card.active,
+html.low-power .step.active .step-num,
+html.low-power .toast {
+  box-shadow: none;
+}
+
+html.low-power .icon-button,
+html.low-power .pill,
+html.low-power .topic-card,
+html.low-power .primary-button,
+html.low-power .ghost-button,
+html.low-power .cta-button,
+html.low-power .drawer-panel,
+html.low-power .metric-bar-fill,
+html.low-power .ring-fill,
+html.low-power .ring-fill.big,
+html.low-power .toast {
+  transition: none;
+}
+
+/* ============================================================
    Splash
    ============================================================ */
 
@@ -1290,6 +1346,19 @@ input[type="range"]::-moz-range-thumb {
    ============================================================ */
 
 @media (max-width: 900px) {
+  body::after {
+    display: none;
+  }
+
+  .card {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  .drawer-overlay {
+    backdrop-filter: none;
+  }
+
   .app {
     padding: 20px 16px 36px;
     max-width: 780px;
@@ -1343,6 +1412,27 @@ input[type="range"]::-moz-range-thumb {
   .icon-button {
     width: 44px;
     height: 44px;
+  }
+
+  .splash-bg,
+  .splash-logo .wave-bar,
+  .splash-loader span,
+  .mic-button.recording {
+    animation: none;
+  }
+
+  .splash-logo {
+    animation: logoIn 0.6s var(--ease) both;
+    filter: none;
+  }
+
+  .cta-button,
+  .primary-button,
+  .mic-button,
+  .topic-card.active,
+  .step.active .step-num,
+  .toast {
+    box-shadow: none;
   }
 
   .stepper {
@@ -1548,5 +1638,14 @@ input[type="range"]::-moz-range-thumb {
 
   .step-bar {
     display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
